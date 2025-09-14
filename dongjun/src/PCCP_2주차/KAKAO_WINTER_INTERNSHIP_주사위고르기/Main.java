@@ -1,4 +1,4 @@
-package KAKAO_WINTER_INTERNSHIP_주사위고르기;
+package PCCP_2주차.KAKAO_WINTER_INTERNSHIP_주사위고르기;
 
 import java.util.*;
 

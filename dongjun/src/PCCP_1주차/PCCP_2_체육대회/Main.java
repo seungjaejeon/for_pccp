@@ -1,6 +1,4 @@
-package PCCP_2_체육대회;
-
-import java.util.ArrayList;
+package PCCP_1주차.PCCP_2_체육대회;
 
 public class Main {
     public static void main(String[] args) {
