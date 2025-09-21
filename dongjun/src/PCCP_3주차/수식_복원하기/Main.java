@@ -17,6 +17,7 @@ public class Main {
         채워넣으려고 한다
          */
 
+
         int minBase = 2;
         for (String expr : expressions) {
             for (char c : expr.toCharArray()) {
