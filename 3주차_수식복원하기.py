@@ -25,7 +25,7 @@ def N2int(num, N):
 
     return temp
 
-
+# 수식이 N진법에서 가능한지 판별
 def isPossibleN(N, expression):
     exList = expression.split(' ')
 
@@ -44,6 +44,8 @@ def isPossibleN(N, expression):
     else:
         return a is not False and b is not False
 
+# X구하기 함수
+# 구할 수 있으면 값 return 없으면 ? return
 def getSolX(NList, solExpression):
     exList = solExpression.split(' ')
     cList = []
@@ -67,6 +69,7 @@ def getSolX(NList, solExpression):
 
     return ' '.join(exList)
 
+# N진법 리스트에서 불가능한 리스트 제거 후 getSolX 돌리기
 def solution(expressions):
     NList = [2, 3, 4, 5, 6, 7, 8, 9]
 
