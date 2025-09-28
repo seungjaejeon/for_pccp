@@ -100,5 +100,4 @@ public class Main {
 
         return new int[]{holJJakTreeCount, yeokHolJJakTreeCount};
     }
-
 }
