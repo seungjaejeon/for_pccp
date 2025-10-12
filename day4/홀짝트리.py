@@ -11,6 +11,7 @@ def solution(nodes, edges):
 
     # 인접 리스트 & 차수
     adj = defaultdict(list)
+    
     for u, v in edges:
         adj[u].append(v)
         adj[v].append(u)

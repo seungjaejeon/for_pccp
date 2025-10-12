@@ -14,13 +14,13 @@ def move_front(li):
 def move_back(li):
     n = li.pop()
     li.appendleft(n)
-    
+
 ret = 0
 for p in pop:
     idx = li.index(p)
     if idx == 0:
         li.popleft()
-    elif idx < len(li) - idx - 1:
+    elif idx < len(li) - idx:
         for i in range(idx):
             move_front(li)
         li.popleft()

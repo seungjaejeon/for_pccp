@@ -7,8 +7,7 @@ for s in str:
     else:
         dict_[s.upper()] = 1
 sorted_dict = sorted(dict_.items(), key=lambda x: x[1], reverse=True)
-print(sorted_dict)
-if sorted_dict[0][1] != sorted_dict[1][1] :
+if len(sorted_dict) == 1 or sorted_dict[0][1] != sorted_dict[1][1] :
     print(sorted_dict[0][0])
 else:
     print("?")

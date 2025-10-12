@@ -1,43 +1,58 @@
+# 1 : 익은 / 0: 익지 않은 / -1: 없는
 import sys
 from collections import deque
-# 가로, 세로 높이
-M, N, H = map(int, sys.stdin.readline().split())
+M,N,H = map(int, sys.stdin.readline().split())
 list_ = []
 tomato = deque()
+
 X = [-1,0,0,1,0,0]
-Y = [0,1,-1,0,H,-H]
-zero = 0
-for i in range(N*H):
-    li = list(map(int, sys.stdin.readline().split()))
-    for j, val in enumerate(li):
-        if val == 1:
-            tomato.append([i, j, 0])
-        if val == 0:
-            zero += 1
-    list_.append(li)
-def in_range(y, x, N, M):
-    if 0<=x<M and N*(y//N)<=y<N*(y//N+1) and 0<=y<N*H:
-        return True
-ans = 0
+Y = [0,-1,1,0,N,-N]
 
-while tomato:
-    y, x, day = tomato.popleft()
-    for _ in range(6):
-        dy = y + Y[_]
-        dx = x + X[_]
-        if in_range(dy, dx, N, M) and list_[dy][dx] == 0:
-            tomato.append([dy, dx, day + 1])
-            list_[dy][dx] = day + 1
-            ans = max(ans, day + 1)
-
-flag = False
-for i in range(N*H):
-    if flag : break
+def check_range(y, x):
+  if 0<=y<N*H and 0<=x<M:
+    return True
+  return False
+def check_done():
+  for i in range(N*H):
     for j in range(M):
-        if list_[i][j] == 0:
-            print(-1)
-            flag = True
-            break
-if not flag:
-    print(ans)
-        
+      if list_[i][j] == 0:
+        return False
+  return True
+for i in range(N*H):
+  tmp = list(map(int, sys.stdin.readline().split()))
+  for j, li in enumerate(tmp):
+    if li == 1:
+      tomato.append([i, j, 0])
+  list_.append(tmp)
+ans = 0
+while tomato:
+  if check_done() : break
+  y, x, day = tomato.popleft()
+  for _ in range(4):
+    dy = Y[_] + y
+    dx = X[_] + x
+    if dy // N == y // N and check_range(dy, dx) and list_[dy][dx] == 0:
+      list_[dy][dx] = day + 1
+      tomato.append([dy, dx, day + 1])
+      ans = max(ans, day + 1)
+  for _ in range(2):
+    dy = Y[4+_] + y
+    dx = X[4+_] + x
+    if check_range(dy, dx) and list_[dy][dx] == 0:
+      list_[dy][dx] = day + 1
+      tomato.append([dy, dx, day + 1])
+      ans = max(ans, day + 1)
+flag = True
+for i in range(N*H):
+  if not flag : break
+  for j in range(M):
+    if list_[i][j] == 0:
+      print(-1)
+      flag = False
+      break
+if flag:
+  print(ans)
+
+    
+
+s
